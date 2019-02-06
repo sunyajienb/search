@@ -47,7 +47,7 @@ public class TestSlaveServiceImpl implements TestSlaveService {
         if (Objects.isNull(testSlave)) {
             return false;
         }
-        IndexRequest indexRequest = new IndexRequest(index, Constants.TYPE).source(JSONObject.toJSONString(testSlave), XContentType.JSON);
+        IndexRequest indexRequest = new IndexRequest(index, Constants.TYPE, testSlave.getId().toString()).source(JSONObject.toJSONString(testSlave), XContentType.JSON);
         try {
             restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
             return true;

@@ -10,4 +10,17 @@ public class Constants {
 
     public static final String TYPE = "job";
 
+    /**
+     * 添加
+     */
+    public static final int add_index = 1;
+    /**
+     * 删除
+     */
+    public static final int delete_index = 2;
+    /**
+     * 更新
+     */
+    public static final int update_index = 3;
+
 }
