@@ -16,11 +16,6 @@ import lombok.NoArgsConstructor;
 public class TestSlave {
 
     /**
-     * es中的id
-     */
-    private String indexId;
-
-    /**
      * 主键
      */
     private Integer id;

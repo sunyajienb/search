@@ -11,6 +11,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Objects;
 
 /**
  * @class: KafkaClientReceiver
@@ -29,22 +30,23 @@ public class KafkaClientReceiver {
     public void consumeMessage(ConsumerRecord record) {
         log.info("record=>" + record);
         Message message = JSONObject.parseObject(record.value().toString(), Message.class);
-        log.info("message=>" + message);
+        TestSlave testSlave = null;
+        if (Objects.nonNull(message.getBody())) {
+            testSlave = JSONObject.parseObject(message.getBody().toString(), TestSlave.class);
+        }
         switch (message.getAction().intValue()) {
             case Constants.add_index:
-                addIndex(message);
+                testSlaveService.addIndex(testSlave);
                 break;
             case Constants.delete_index:
+                testSlaveService.deleteIndex(Integer.valueOf(message.getId()));
                 break;
             case Constants.update_index:
+                testSlaveService.updateIndex(testSlave);
                 break;
             default:
                 break;
         }
-    }
-
-    private void addIndex(Message message) {
-        testSlaveService.addIndex(JSONObject.parseObject(message.getBody().toString(), TestSlave.class));
     }
 
 }

@@ -18,8 +18,6 @@ public interface TestSlaveService {
 
     boolean updateIndex(TestSlave testSlave);
 
-    TestSlave queryById(Integer id);
-
     List<TestSlave> queryList();
 
 }
