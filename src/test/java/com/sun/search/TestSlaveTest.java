@@ -26,7 +26,7 @@ public class TestSlaveTest {
 
     @Test
     public void addIndex() {
-        TestSlave testSlave = TestSlave.builder().id(2).age(18).name("李四d1233").build();
+        TestSlave testSlave = TestSlave.builder().id(9).age(18).name("李四d1233").build();
         testSlaveService.addIndex(testSlave);
     }
 

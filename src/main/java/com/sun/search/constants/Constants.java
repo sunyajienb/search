@@ -11,6 +11,11 @@ public class Constants {
     public static final String TYPE = "job";
 
     /**
+     * 索引名字
+     */
+    public static final String ES_LEARN_INDEX_NAME = "test_es";
+
+    /**
      * 添加
      */
     public static final int add_index = 1;
