@@ -26,7 +26,12 @@ public class KafkaClientReceiver {
     @Resource
     private TestSlaveService testSlaveService;
 
-    @KafkaListener(topics = {"search-topic"})
+    /**
+     * topic分区数 >= concurrency，concurrency设置才有效。concurrency消费者数
+     *
+     * @param record
+     */
+    @KafkaListener(topics = {"search-topic"}, concurrency = "3")
     public void consumeMessage(ConsumerRecord record) {
         log.info("record=>" + record);
         Message message = JSONObject.parseObject(record.value().toString(), Message.class);
